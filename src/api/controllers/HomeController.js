@@ -13,8 +13,6 @@ module.exports = {
 	 * `HomeController.index()`
 	 */
 	index: function(req, res) {
-		return res.json({
-			todo: 'index() is not  yet!'
-		});
+		return res.view()
 	}
 };
