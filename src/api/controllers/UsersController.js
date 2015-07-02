@@ -1,16 +1,14 @@
 /**
- * HomeController
+ * UsersController
  *
- * @description :: Server-side logic for managing homes
+ * @description :: Server-side logic for managing Users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
 
-
-
 	/**
-	 * `HomeController.index()`
+	 * `UsersController.index()`
 	 */
 	index: function(req, res) {
 		// User.find().exec(function(err, users) {

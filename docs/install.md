@@ -20,7 +20,7 @@ https://registry.hub.docker.com/u/richarvey/nginx-nodejs/
 ```shell
 #install
 docker pull richarvey/nginx-nodejs:stable
-#launch
+#launch test
 sudo docker run --name nginx -p 8080:80 -d richarvey/nginx-nodejs:stable
 ```
 
@@ -31,7 +31,7 @@ https://registry.hub.docker.com/u/orchardup/postgresql/
 ```shell
 #install
 docker pull orchardup/postgresql
-#launch
+#launch test
 sudo docker run --name posgresql -d -p 5432:5432 -e POSTGRESQL_USER=test -e POSTGRESQL_PASS=oe9jaacZLbR9pN -e POSTGRESQL_DB=test orchardup/postgresql
 
 ```

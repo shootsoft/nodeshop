@@ -19,10 +19,36 @@ module.exports = {
 			email = req.param('email', '')
 			password = req.param('password', '')
 			if (email && password) {
-				return res.json({
-					email: email,
-					password: password
-				})
+				//Login
+				User.findOneByEmail(email)
+					.then(function(user) {
+						var pass = false
+						if (user) {
+							var crypto = require('crypto');
+							var hash = crypto.createHash('sha1').update(password + user.salt).digest(
+								"hex")
+							console.log(hash)
+							if (user.password == hash) {
+								pass = true
+							}
+						}
+						if (pass) {
+							req.session.user = user
+							console.log(user.role)
+								//set admin role
+							if (user.role == 1) {
+								req.session.admin = true
+							}
+							res.redirect('/')
+						} else {
+							return res.view('account/login', {
+								msg: 'Please check your email and password',
+								layout: ''
+							})
+						}
+
+					})
+
 			} else {
 				return res.view('account/login', {
 					msg: 'Please input your email and password',
@@ -38,10 +64,9 @@ module.exports = {
 	 * `AccountController.logout()`
 	 */
 	logout: function(req, res) {
-
-		return res.json({
-			todo: 'logout() is not implemented yet!'
-		});
+		req.session.user = undefined
+		req.session.admin = undefined
+		return res.redirect('/');
 	},
 
 
