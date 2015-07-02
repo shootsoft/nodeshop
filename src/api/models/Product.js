@@ -27,11 +27,11 @@ module.exports = {
 
         price: {
             type: 'float'
-        }
+        },
 
         createdAt: {
             type: 'datetime'
-        }
+        },
 
         updatedAt: {
             type: 'datetime'

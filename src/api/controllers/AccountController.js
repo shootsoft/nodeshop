@@ -20,34 +20,7 @@ module.exports = {
 			password = req.param('password', '')
 			if (email && password) {
 				//Login
-				User.findOneByEmail(email)
-					.then(function(user) {
-						var pass = false
-						if (user) {
-							var crypto = require('crypto');
-							var hash = crypto.createHash('sha1').update(password + user.salt).digest(
-								"hex")
-							console.log(hash)
-							if (user.password == hash) {
-								pass = true
-							}
-						}
-						if (pass) {
-							req.session.user = user
-							console.log(user.role)
-								//set admin role
-							if (user.role == 1) {
-								req.session.admin = true
-							}
-							res.redirect('/')
-						} else {
-							return res.view('account/login', {
-								msg: 'Please check your email and password',
-								layout: ''
-							})
-						}
-
-					})
+				UserService.login(req, res, email, password)
 
 			} else {
 				return res.view('account/login', {
