@@ -1,3 +1,15 @@
+-- Database: nodeshop
+
+-- DROP DATABASE nodeshop;
+
+CREATE DATABASE nodeshop
+  WITH OWNER = test
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'en_US.UTF-8'
+       LC_CTYPE = 'en_US.UTF-8'
+       CONNECTION LIMIT = -1;
+
 /*
  Navicat PostgreSQL Data Transfer
 
@@ -81,7 +93,7 @@ ALTER TABLE "public"."t_order_details" ADD PRIMARY KEY ("id") NOT DEFERRABLE INI
  Target Server Version : 90305
  File Encoding         : utf-8
 
- Date: 07/02/2015 23:21:19 PM
+ Date: 07/03/2015 01:38:19 AM
 */
 
 -- ----------------------------

@@ -41,7 +41,7 @@ $(document).ready(function() {
     
 
     $('#genorder').bind('click', function(){
-
+    	//
     })
 });
 
