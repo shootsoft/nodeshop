@@ -26,7 +26,15 @@ module.exports = {
 					if (user.role == 1) {
 						req.session.admin = true
 					}
-					res.redirect('/')
+
+					var url = req.param('url')
+					//sails.log.debug(url)
+					//TODO: url shouldn't be login again
+					if (url && url!='undefined' && url!='null'){
+						res.redirect(url)
+					} else {
+						res.redirect('/')
+					}
 				} else {
 					return res.view('account/login', {
 						msg: 'Please check your email and password',

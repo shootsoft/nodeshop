@@ -14,12 +14,15 @@ $(document).ready(function() {
             { "data": "desc" },
             { "data": "createdAt" }
         ],
+        //TODO: set last column order false
         responsive: true,
         "rowCallback": function( row, data, index ) {
 		 	cart.products[data.id] = data
 		    if (data.image){
-		    	data.image = '<img style="height:30%" src="'+data.image+'" />'
+		    	data.image = '<img style="height:150px;width:150px" src="'+data.image+'" />'
 		    	$('td:eq(1)', row).html( data.image);
+		    } else {
+		    	data.image = '';
 		    }
 
 		    if (data.desc && data.desc.length > 400){
@@ -41,7 +44,7 @@ $(document).ready(function() {
     
 
     $('#genorder').bind('click', function(){
-    	//
+    	$('#orderform').submit()
     })
 });
 
@@ -50,9 +53,11 @@ var cart ={
 	add:function(id){
 		var p = cart.products[id]
 		if(p){
-			var ui = '<div class="row"><div class="col-lg-4">'+p.name+'</div>'
-					+'<div class="col-lg-4">'+p.image+'</div>'
-        			+'<div class="col-lg-4"></div></div>'
+			var ui = '<div class="row">'
+					+ '<div class="col-lg-5">'+p.name+'</div>'
+					+ '<div class="col-lg-6">'+p.image+'</div>'
+        			+ '<div class="col-lg-1"></div>'
+        			+ '<input type="hidden" value="'+p.id+'" name="product_id[]" /></div>'
         	$('#cartbody').append(ui)
 		}
 	}

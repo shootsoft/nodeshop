@@ -7,10 +7,12 @@
 
 module.exports = {
     tableName: 't_user',
+    //identity: 'id',
     attributes: {
 
         id: {
-            type: 'int'
+          type: 'integer',
+          primaryKey: true
         },
 
         email: {
