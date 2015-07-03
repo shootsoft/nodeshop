@@ -54,7 +54,10 @@ module.exports = {
 	query: function(req, res) {
 
 		if(!req.session.admin){
+			sales.log.debug(req.session.admin)
 			req.session.my = 1
+		} else {
+			req.session.my =  undefined
 		}
 
 		OrderService.query(req, res)
