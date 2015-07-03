@@ -71,14 +71,21 @@ module.exports = {
 
 	detail: function(req, res){
 		if(!req.session.user){
-			sails.log.debug('need login')
+			//console.log('mb1')
+			//return
+			//sails.log.debug('need login')
 			return res.redirect('/')
 		}
 		var id = req.param('id')
-		Order.find({id:id}).then(function(order){
-			if(!req.session.admin && req.session.user.id != order.user_id){
-				sails.log.debug('error user id')
-				return res.redirect('/')
+		Order.findOne({id:id}).exec(function callbk(err, order){
+
+			if(order && !req.session.admin && req.session.user.id != order.user_id){
+				
+				//console.log(JSON.stringify(order))
+				return res.json(order)
+				//return res.redirect('/')
+				//sails.log.debug('error user id')
+				//return res.redirect('/')
 			}
 
 			OrderDetail.find({order_id:id}).then(function(details){
