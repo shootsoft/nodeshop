@@ -10,7 +10,7 @@
  Target Server Version : 90305
  File Encoding         : utf-8
 
- Date: 07/02/2015 23:21:11 PM
+ Date: 07/03/2015 16:47:32 PM
 */
 
 -- ----------------------------
@@ -27,6 +27,15 @@ CREATE TABLE "public"."t_order_details" (
 )
 WITH (OIDS=FALSE);
 ALTER TABLE "public"."t_order_details" OWNER TO "test";
+
+-- ----------------------------
+--  Records of t_order_details
+-- ----------------------------
+BEGIN;
+INSERT INTO "public"."t_order_details" VALUES ('5', '9', '7', '0', '2015-07-03 05:56:30.389', '2015-07-03 05:56:30.389');
+INSERT INTO "public"."t_order_details" VALUES ('6', '10', '7', '0', '2015-07-03 06:12:42.641', '2015-07-03 06:12:42.641');
+INSERT INTO "public"."t_order_details" VALUES ('7', '10', '2', '0', '2015-07-03 06:12:42.641', '2015-07-03 06:12:42.641');
+COMMIT;
 
 -- ----------------------------
 --  Primary key structure for table t_order_details
