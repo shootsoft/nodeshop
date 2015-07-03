@@ -21,7 +21,7 @@ https://registry.hub.docker.com/u/richarvey/nginx-nodejs/
 #install
 docker pull richarvey/nginx-nodejs:stable
 #launch test
-sudo docker run --name nginx -p 8080:80 -d richarvey/nginx-nodejs:stable
+sudo docker run --name nginx -p 80:80 -d richarvey/nginx-nodejs:stable
 ```
 
 ## Postgresql
@@ -34,4 +34,10 @@ docker pull orchardup/postgresql
 #launch test
 sudo docker run --name posgresql -d -p 5432:5432 -e POSTGRESQL_USER=test -e POSTGRESQL_PASS=oe9jaacZLbR9pN -e POSTGRESQL_DB=test orchardup/postgresql
 
+```
+
+## Link nodejs docker with postgresql
+
+```shell
+sudo docker run -e 'GIT_REPO=https://github.com/shootsoft/nodeshop.git' -p 80:80 --link posgresql:posgresql -d richarvey/nginx-nodejs:stable
 ```
