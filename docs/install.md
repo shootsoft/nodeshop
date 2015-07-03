@@ -66,7 +66,20 @@ sudo docker run --name posgresql -d -p 5432:5432 -e POSTGRESQL_USER=test -e POST
 
 ```shell
 #to be varified
-sudo docker run -e 'GIT_REPO=https://github.com/shootsoft/nodeshop.git' -p 80:80 --link posgresql:posgresql -d richarvey/nginx-nodejs:stable
+sudo docker run -e 'GIT_REPO=https://github.com/shootsoft/nodeshop.git' -p 80:80 --link posgresql:posgresql -d nodeshop
+
+sudo docker run --name nginx2 -e 'GIT_REPO=https://github.com/shootsoft/nodeshop.git' -p 8080:80 --link posgresql:posgresql -d nodeshop
 ```
 
+```shell
+
+#launch postgresql
+sudo docker run --name posgresql -d -p 5432:5432 -e POSTGRESQL_USER=test -e POSTGRESQL_PASS=oe9jaacZLbR9pN -e POSTGRESQL_DB=test orchardup/postgresql
+
+#launch node
+#check out master code & link
+sudo docker run -e 'GIT_REPO=https://github.com/shootsoft/nodeshop.git' -p 80:80 --link posgresql:posgresql -d nodeshop
+
+
+```
 

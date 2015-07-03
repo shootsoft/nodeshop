@@ -80,7 +80,17 @@ module.exports.connections = {
         user: 'test',
         password: 'oe9jaacZLbR9pN',
         database: 'nodeshop'
+    },
+
+    localpostgresqlServer: {
+        adapter: 'sails-postgresql',
+        host: '127.0.0.1',
+        user: 'test',
+        password: 'oe9jaacZLbR9pN',
+        database: 'nodeshop'
     }
+
+
 
 
     /***************************************************************************
