@@ -9,6 +9,7 @@ module.exports = {
 
 	/**
 	 * `AccountController.login()`
+	 * login to system
 	 */
 	login: function(req, res) {
 		if (req.method == 'GET') {

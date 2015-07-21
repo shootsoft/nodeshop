@@ -8,7 +8,9 @@
 module.exports = {
 	
 	
-
+	/**
+	 * `OrderAdminController.index()`
+	 */
 	index: function(req, res){
 
 		if(!req.session.user){

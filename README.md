@@ -1,11 +1,16 @@
-# nodeshop
-A simple nodejs shop demo
+nodeshop
+========
+A simple nodejs project using sails framework and reactJS to build some part of UI.
+
+# Project Design 
 
 Trello https://trello.com/b/OzGFluYs/node-shop
 
 # Docs
-- [install](docs/install.md)
-- [shell](docs/shell.md)
+
+- [readme](docs/readme.md) Readme for codes
+- [install](docs/install.md) How to install
+- [shell](docs/shell.md) Shell scripts for this project
 
 # Preview
 

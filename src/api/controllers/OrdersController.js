@@ -31,6 +31,10 @@ module.exports = {
 		//return res.view()
 	},
 
+	/**
+	 * `OrdersController.index()`
+	 * list orders
+	 */
 	index: function(req, res){
 
 		if(!req.session.user){
@@ -50,6 +54,7 @@ module.exports = {
 
 	/**
 	 * `OrdersController.query()`
+	 * return order list in json
 	 */
 	query: function(req, res) {
 
@@ -66,29 +71,26 @@ module.exports = {
 
 	/**
 	 * `OrdersController.my()`
+	 * list personal orders
 	 */
 	my: function(req, res) {
 		req.session.my = 1
 		OrderService.query(req, res)
 	},
-
+	
+	/**
+	 * `OrdersController.my()`
+	 * show a detail of a order
+	 */
 	detail: function(req, res){
 		if(!req.session.user){
-			//console.log('mb1')
-			//return
-			//sails.log.debug('need login')
 			return res.redirect('/')
 		}
 		var id = req.param('id')
 		Order.findOne({id:id}).exec(function callbk(err, order){
 
 			if(order && !req.session.admin && req.session.user.id != order.user_id){
-				
-				//console.log(JSON.stringify(order))
 				return res.json(order)
-				//return res.redirect('/')
-				//sails.log.debug('error user id')
-				//return res.redirect('/')
 			}
 
 			OrderDetail.find({order_id:id}).then(function(details){
