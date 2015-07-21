@@ -25,8 +25,6 @@ sudo node app.js --silent --port=8099
 
 # Docker manually
 
-!!!NOT COMPLETE YET!!!
-
 ## Mac installation
 
 https://docs.docker.com/installation/mac/
