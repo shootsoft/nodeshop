@@ -1,5 +1,5 @@
 /**
- * UserService
+ * OrderService
  *
  * @description :: Server-side logic for managing user's service
  */
@@ -7,7 +7,8 @@
 module.exports = {
 
 	/**
-	 * 
+	 * `OrderService.create()`
+	 * Create new order
 	 */
 	create: function(req, res, product_ids) {
 		sails.log.debug('creating order ' + JSON.stringify(product_ids))
@@ -79,7 +80,10 @@ module.exports = {
 
 	},
 
-
+	/**
+	 * `OrderService.query()`
+	 * query order list
+	 */
 	query: function(req, res){
 
 		var cols = ['id', 'createdAt', 'total_price', 'item_count', "status"]
@@ -114,12 +118,12 @@ module.exports = {
 			query.sort(sort).then(function(data){
 				User.find().exec(function findCB(error, users){
 					var dict = {}
-					for (i in users){
+					for (var i in users){
 						var u = users[i]
 						dict[u.id] = u
 					}
 
-					for (i in data){
+					for (var i in data){
 						var d = data[i]
 						if(dict[d.user_id]){
 							data[i].email = dict[d.user_id].email

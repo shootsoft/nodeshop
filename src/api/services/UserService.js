@@ -8,7 +8,8 @@ module.exports = {
 
 
 	/**
-	 *
+	 * `UserService.login()`
+	 * login to system
 	 */
 	login: function(req, res, email, password) {
 		User.findOneByEmail(email)
@@ -45,11 +46,16 @@ module.exports = {
 
 			})
 	},
-
+	
+	/**
+	 * `UserService.register()`
+	 * register a new user
+	 */
 	register: function(email, password, role) {
 		User.findOneByEmail(email)
 			.then(function(user) {
 				if (user == undefined) {
+					//generate random salt
 					var salt = Math.random().toString(36).substring(2)
 					User.create({
 						email: email,
@@ -62,7 +68,11 @@ module.exports = {
 				}
 			})
 	},
-
+	
+	/**
+	 * `UserService.hash()`
+	 * hash user's password with a random salt
+	 */
 	hash: function(password, salt) {
 		var crypto = require('crypto');
 		return crypto.createHash('sha1').update(password + salt).digest(
